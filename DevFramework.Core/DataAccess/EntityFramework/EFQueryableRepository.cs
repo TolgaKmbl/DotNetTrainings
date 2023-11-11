@@ -28,8 +28,7 @@ namespace DevFramework.Core.DataAccess.EntityFramework
         {
             get
             {
-                _dbSet ??= _context.Set<T>();
-                return _dbSet;
+                return _dbSet ?? (_dbSet=_context.Set<T>());
             }
         }
     }

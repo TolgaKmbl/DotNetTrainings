@@ -11,7 +11,7 @@ namespace DevFramework.Core.DataAccess.NHibernate
     {
         private static ISessionFactory _sessionFactory;
 
-        public virtual ISessionFactory SessionFactory => _sessionFactory ??= InitializeFactory();
+        public virtual ISessionFactory SessionFactory => _sessionFactory ??(_sessionFactory=InitializeFactory());
 
         protected abstract ISessionFactory InitializeFactory();
 

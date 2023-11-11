@@ -44,7 +44,7 @@ namespace DevFramework.Core.DataAccess.NHibernate
             }
         }
 
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>>? filter = null)
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var session = _nHibernateHelper.OpenSession())
             {

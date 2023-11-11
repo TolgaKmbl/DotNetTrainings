@@ -25,7 +25,7 @@ namespace DevFramework.Core.DataAccess.NHibernate
         {
             get 
             {
-                return entities ??= _nHibernateHelper.OpenSession().Query<T>();
+                return entities ??(entities=_nHibernateHelper.OpenSession().Query<T>());
             }
         }
     }
