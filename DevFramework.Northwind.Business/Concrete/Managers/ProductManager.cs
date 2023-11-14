@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace DevFramework.Northwind.Business.Concrete.Managers
 {
@@ -35,6 +36,25 @@ namespace DevFramework.Northwind.Business.Concrete.Managers
         public Product Insert(Product product)
         {
             return _productDal.Add(product);
+        }
+
+        [TransactionalAspect]
+        public void TransactionalOperation(Product product1, Product product2)
+        {
+            _productDal.Add(product1);
+            _productDal.Add(product2);
+            //using (TransactionScope scope = new TransactionScope()) 
+            //{
+            //    try 
+            //    {
+            //        _productDal.Add(product1);
+            //        _productDal.Add(product2);
+            //        scope.Complete();
+            //    } catch (Exception ex) 
+            //    {
+            //        scope.Dispose();
+            //    }
+            //}
         }
 
         [FluentValidationAspect(typeof(ProductValidator))]

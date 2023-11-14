@@ -13,5 +13,6 @@ namespace DevFramework.Northwind.Business.Abstract
         Product GetById(int productId);
         Product Insert(Product product);
         Product Update(Product product);
+        void TransactionalOperation(Product product1, Product product2);
     }
 }

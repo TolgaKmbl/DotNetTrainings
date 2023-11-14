@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace DevFramework.Northwind.Business.DependencyResolvers.Ninject
 {
-    public class BusinessModule:NinjectModule
+    public class BusinessModule : NinjectModule
     {
         public override void Load()
         {
