@@ -34,6 +34,7 @@ namespace DevFramework.Northwind.Business.Concrete.Managers
             return _productDal.Get(p => p.ProductId == productId);
         }
 
+        [CacheRemoveAspect(typeof(MemCacheManager))]
         [FluentValidationAspect(typeof(ProductValidator))]
         public Product Insert(Product product)
         {
