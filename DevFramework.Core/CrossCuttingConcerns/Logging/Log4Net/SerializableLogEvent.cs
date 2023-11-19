@@ -12,12 +12,12 @@ namespace DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net
     {
         private LoggingEvent _loggingEvent;
 
-        public string UserName => _loggingEvent.UserName;
-        public object MessageObject => _loggingEvent.MessageObject;
-
         public SerializableLogEvent(LoggingEvent loggingEvent)
         {
-            loggingEvent = _loggingEvent;
+            _loggingEvent = loggingEvent;
         }
+
+        public string UserName => _loggingEvent.UserName;
+        public object MessageObject => _loggingEvent.MessageObject;
     }
 }
