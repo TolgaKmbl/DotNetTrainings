@@ -27,7 +27,7 @@ namespace DevFramework.Northwind.Business.Concrete.Managers
 
         [CacheAspect(typeof(MemCacheManager))]        
         [LogAspect(typeof(FileLogger))]
-        [SecuredOperation(Roles="Admin")]
+        //[SecuredOperation(Roles="Admin")]
         public List<Product> GetAll()
         {
             return _productDal.GetAll();
