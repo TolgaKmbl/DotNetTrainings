@@ -34,7 +34,7 @@ namespace DevFramework.Northwind.MvcWebUI
             try
             {
                 var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
-                if (authCookie == null)
+                if (authCookie != null)
                 {
                     var encryptedTicket = authCookie.Value;
                     if (!String.IsNullOrEmpty(encryptedTicket))
