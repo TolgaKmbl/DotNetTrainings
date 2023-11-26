@@ -1,4 +1,5 @@
-﻿using DevFramework.Northwind.Entities.Concrete;
+﻿using DevFramework.Northwind.Entities.ComplexTypes;
+using DevFramework.Northwind.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace DevFramework.Northwind.Business.Abstract
         User GetByUserNameAndPassword(string username, string password);
         User Insert(User user);
         User Update(User user);
+        List<UserRoles> GetUserRoles(User user);
     }
 }

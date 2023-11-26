@@ -1,5 +1,6 @@
 ﻿using DevFramework.Northwind.Business.Abstract;
 using DevFramework.Northwind.DataAccess.Abstract;
+using DevFramework.Northwind.Entities.ComplexTypes;
 using DevFramework.Northwind.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,11 @@ namespace DevFramework.Northwind.Business.Concrete.Managers
         public User GetByUserNameAndPassword(string username, string password)
         {
             return _userDal.Get(u => u.UserName == username & u.Password == password);
+        }
+
+        public List<UserRoles> GetUserRoles(User user)
+        {
+            return _userDal.GetUserRoles(user);
         }
 
         public User Insert(User user)
