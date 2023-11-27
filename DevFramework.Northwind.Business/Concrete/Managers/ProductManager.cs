@@ -1,11 +1,14 @@
-﻿using DevFramework.Core.Aspects.Postsharp;
+﻿using AutoMapper;
+using DevFramework.Core.Aspects.Postsharp;
 using DevFramework.Core.CrossCuttingConcerns.Caching.Microsoft;
 using DevFramework.Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using DevFramework.Core.CrossCuttingConcerns.Validation.FluentValidation;
+using DevFramework.Core.Utilities.Mappings;
 using DevFramework.Northwind.Business.Abstract;
 using DevFramework.Northwind.Business.ValidationRules.FluentValidation;
 using DevFramework.Northwind.DataAccess.Abstract;
 using DevFramework.Northwind.Entities.Concrete;
+using FluentNHibernate.Testing.Values;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +33,8 @@ namespace DevFramework.Northwind.Business.Concrete.Managers
         //[SecuredOperation(Roles="Admin")]
         public List<Product> GetAll()
         {
-            return _productDal.GetAll();
+            List<Product> products = AutoMapperHelper.MapToSameTypeList(_productDal.GetAll());
+            return products;
         }
 
         public Product GetById(int productId)
