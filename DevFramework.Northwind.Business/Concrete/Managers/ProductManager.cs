@@ -22,10 +22,12 @@ namespace DevFramework.Northwind.Business.Concrete.Managers
     public class ProductManager : IProductService
     {
         private readonly IProductDal _productDal;
+        private readonly IMapper _mapper;
 
-        public ProductManager(IProductDal productDal)
+        public ProductManager(IProductDal productDal, IMapper mapper)
         {
             _productDal = productDal;
+            _mapper = mapper;
         }
 
         [CacheAspect(typeof(MemCacheManager))]        
@@ -33,7 +35,7 @@ namespace DevFramework.Northwind.Business.Concrete.Managers
         //[SecuredOperation(Roles="Admin")]
         public List<Product> GetAll()
         {
-            List<Product> products = AutoMapperHelper.MapToSameTypeList(_productDal.GetAll());
+            List<Product> products = _mapper.Map<List<Product>>(_productDal.GetAll());
             return products;
         }
 
