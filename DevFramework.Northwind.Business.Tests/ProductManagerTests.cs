@@ -1,4 +1,5 @@
-﻿using DevFramework.Northwind.Business.Concrete.Managers;
+﻿using AutoMapper;
+using DevFramework.Northwind.Business.Concrete.Managers;
 using DevFramework.Northwind.DataAccess.Abstract;
 using DevFramework.Northwind.Entities.Concrete;
 using FluentValidation;
@@ -16,7 +17,8 @@ namespace DevFramework.Northwind.Business.Tests
         public void Product_Validation_Test()
         {
             Mock<IProductDal> mockProductDal = new Mock<IProductDal>();
-            ProductManager productManager = new ProductManager(mockProductDal.Object);
+            Mock<IMapper> mockMapper = new Mock<IMapper>();
+            ProductManager productManager = new ProductManager(mockProductDal.Object, mockMapper.Object);
 
             productManager.Insert(new Product());
         }
